@@ -1,9 +1,9 @@
 export const AuthConfigOptions = {
-  apiKey: "",
-  authDomain: "vue-firebase-auth-2802d.firebaseapp.com",
-  databaseURL: "https://vue-firebase-auth-2802d.firebaseio.com",
-  projectId: "vue-firebase-auth-2802d",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyAAxvd3HPVd3kfdWgGZ9cfZStOqBe5_pE8",
+  authDomain: "jwt-auth-de84f.firebaseapp.com",
+  databaseURL: "https://jwt-auth-de84f.firebaseio.com",
+  projectId: "jwt-auth-de84f",
+  storageBucket: "jwt-auth-de84f.appspot.com",
+  messagingSenderId: "499174271668",
+  appId: "1:499174271668:web:9576a308a2729e794585e1"
 }

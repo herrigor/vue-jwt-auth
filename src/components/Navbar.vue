@@ -1,5 +1,4 @@
 <template>
-  <div>
   <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
       <router-link to="/" class="navbar-brand">Vue Firebase Auth</router-link>
@@ -35,15 +34,12 @@
       </div>
     </div>
   </nav>
-    <main class="py-4">
-      <router-view></router-view>
-    </main>
-  </div>
 </template>
 <script>
 import { mapGetters } from "vuex";
 import firebase from "firebase";
 export default {
+  name: 'Navbar',
   computed: {
     ...mapGetters({
 // map `this.user` to `this.$store.getters.user`
