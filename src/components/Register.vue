@@ -5,8 +5,11 @@
         <div class="card">
           <div class="card-header">Register</div>
           <div class="card-body">
+
+            <div v-if="msg" class="alert alert-sucess">{{msg}}</div>
             <div v-if="error" class="alert alert-danger">{{error}}</div>
-            <form action="#" @submit.prevent="submit">
+
+            <form action="#" @submit.prevent="submit" v-if="msg==null">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
@@ -57,7 +60,7 @@
               </div>
 
               <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
+                <div class="col-md-8 offset-md-4 text-right">
                   <button type="submit" class="btn btn-primary">Register</button>
                 </div>
               </div>
@@ -81,7 +84,8 @@ export default {
         email: "",
         password: ""
       },
-      error: null
+      error: null,
+      msg: null,
     };
   },
   methods: {
@@ -94,7 +98,14 @@ export default {
             .updateProfile({
               displayName: this.form.name
             })
-            .then(() => {});
+            .then(() => {
+              this.msg = this.form.name+', seu cadastro foi realizado com sucesso.';
+
+              const _this = this;
+              setTimeout(function(){
+                _this.$router.push({ name: "Dashboard" }); 
+              },2000);
+            });
         })
         .catch(err => {
           this.error = err.message;

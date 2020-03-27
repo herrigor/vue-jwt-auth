@@ -40,7 +40,7 @@
               </div>
 
               <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
+                <div class="col-md-8 offset-md-4 text-right">
                   <button type="submit" class="btn btn-primary">Login</button>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(() => {
-          this.$router.replace({ name: "Dashboard" });
+          this.$router.push({ name: "Dashboard" });
         })
         .catch(err => {
           this.error = err.message;
