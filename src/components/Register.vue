@@ -7,7 +7,7 @@
           <div class="card-body">
 
             <div v-if="msg" class="alert alert-sucess">{{msg}}</div>
-            <div v-if="error" class="alert alert-danger">{{error}}</div>
+            <div v-if="error" class="alert alert-danger">{{errorMessage}}</div>
 
             <form action="#" @submit.prevent="submit" v-if="msg==null">
               <div class="form-group row">
@@ -88,6 +88,21 @@ export default {
       msg: null,
     };
   },
+  computed:{
+    errorMessage(){
+      switch(this.error){
+        case 'The email address is already in use by another account.':
+          return 'Endereço de email já cadastrado.'
+        case 'Password should be at least 6 characters':
+        case 'The password must be 6 characters long or more.':
+          return 'A senha precisa ter pelo menos 6 caracteres.'
+        case 'The email address is badly formatted.':
+          return 'Verifique se o endereço de email digitado corretamente.'
+        default:
+          return (this.error);
+      }
+    }
+  },
   methods: {
     submit() {
       firebase
@@ -99,6 +114,14 @@ export default {
               displayName: this.form.name
             })
             .then(() => {
+              var user = firebase.auth().currentUser;
+              user.sendEmailVerification().then(function() {
+                console.log('Email de verificação enviado')
+              }).catch(function(error) {
+                // An error happened.
+                console.log('Email de verificação falhou: ', error)
+              });
+
               this.msg = this.form.name+', seu cadastro foi realizado com sucesso.';
 
               const _this = this;

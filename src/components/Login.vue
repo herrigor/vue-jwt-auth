@@ -39,8 +39,12 @@
                 </div>
               </div>
 
-              <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4 text-right">
+              <div class="form-group row mb-0 align-items-center">
+                <div class="col-sm-8 text-left">
+                  <p><router-link to="forgot-password">Esqueci minha senha</router-link></p>
+                  <p>Não possui uma conta? <router-link to="register">Registre-se</router-link></p>
+                </div>
+                <div class="col-sm-4 text-right">
                   <button type="submit" class="btn btn-primary">Login</button>
                 </div>
               </div>
@@ -51,6 +55,12 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+p{
+  margin: 0;
+}  
+</style>
 
 <script>
 import firebase from "firebase";
