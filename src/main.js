@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { domain, clientId } from "../auth_config.json";
+import { AuthConfigOptions } from "../auth_config.js";
 import { Auth0Plugin } from "./auth";
+import * as firebase from "firebase";
+
 
 Vue.use(Auth0Plugin, {
   domain,
@@ -17,6 +19,9 @@ Vue.use(Auth0Plugin, {
 });
 
 Vue.config.productionTip = false
+
+const configOptions = AuthConfigOptions;
+firebase.initializeApp(configOptions);
 
 new Vue({
   router,
